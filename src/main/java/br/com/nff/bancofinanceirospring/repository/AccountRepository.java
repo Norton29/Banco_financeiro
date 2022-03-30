@@ -1,11 +1,9 @@
 package br.com.nff.bancofinanceirospring.repository;
 
+import br.com.nff.bancofinanceirospring.domain.Account;
+import br.com.nff.bancofinanceirospring.domain.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.nff.bancofinanceirospring.domain.AccountDTO;
-
-public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
-	
-	
-
+//Herança entre interfaces
+public interface AccountRepository extends JpaRepository<Account, Long> {
 }
