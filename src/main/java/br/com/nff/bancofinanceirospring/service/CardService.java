@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.nff.bancofinanceirospring.domain.CardDTO;
-import br.com.nff.bancofinanceirospring.domain.ClientDTO;
+import br.com.nff.bancofinanceirospring.domain.Card;
 import br.com.nff.bancofinanceirospring.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -15,13 +14,20 @@ public class CardService {
 
 	private final CardRepository cardRepository;
 	
-	public List<CardDTO> findAll(){
+	public List<Card> findAll(){
 		return cardRepository.findAll();
 		
 	}
 	
-	public CardDTO insert(CardDTO card){
+	public Card insert(Card card){
 		return cardRepository.save(card);
 	}
+	
+
+	public void delete(Long id) {
+		cardRepository.deleteById(id);
+		
+		
+	}		
 	
 }

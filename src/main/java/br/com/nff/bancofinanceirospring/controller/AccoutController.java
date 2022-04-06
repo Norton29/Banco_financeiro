@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.nff.bancofinanceirospring.domain.AccountDTO;
+import br.com.nff.bancofinanceirospring.domain.Account;
 import br.com.nff.bancofinanceirospring.service.AccountService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,15 +21,16 @@ public class AccoutController {
 	private final AccountService service;
 
 	@GetMapping
-	public ResponseEntity<List<AccountDTO>> findAll(){
-		List<AccountDTO> list = service.findAll();
+	public ResponseEntity<List<Account>> findAll(){
+		List<Account> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PostMapping
-	public ResponseEntity<AccountDTO> insert(@RequestBody AccountDTO account){
+	public ResponseEntity<Account> insert(@RequestBody Account account){
 		account = service.insert(account);
 		return ResponseEntity.ok().body(account);
-	}
+	}	
+
 }
 	
