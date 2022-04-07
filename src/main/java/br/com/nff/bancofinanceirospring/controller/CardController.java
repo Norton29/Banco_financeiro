@@ -2,6 +2,8 @@ package br.com.nff.bancofinanceirospring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,7 @@ public class CardController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Card> insert(@RequestBody Card card){
+	public ResponseEntity<Card> insert(@RequestBody @Valid Card card){
 		card = service.insert(card);
 		return ResponseEntity.ok().body(card);
 	}

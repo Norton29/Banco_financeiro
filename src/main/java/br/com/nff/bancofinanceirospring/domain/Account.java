@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import br.com.nff.bancofinanceirospring.domain.enums.AccountType;
@@ -38,7 +37,7 @@ public class Account implements Serializable{
 	@NotNull(message = "Account Number is mandatory")
 	private Integer accountNumber;
 	
-	@NotBlank(message = "Name is mandatory")
+	@NotNull(message = "Balance is mandatory")
 	private Double balance;
 	
 	

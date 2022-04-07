@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_client")
-public class Client implements Serializable{
+public class Client extends RepresentationModel<Client> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -67,6 +69,7 @@ public class Client implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Card> cardLists;
+	
 	
 	
 }

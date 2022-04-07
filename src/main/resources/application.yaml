@@ -1,5 +1,5 @@
 spring:
- profiles:
-  active=dev
- jpa:
-  open-in-view=true
+    profiles:
+      active: dev
+jpa:
+    open-in-view: true

@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
-
 import br.com.nff.bancofinanceirospring.domain.enums.CardType;
 import lombok.Data;
 import lombok.NoArgsConstructor;

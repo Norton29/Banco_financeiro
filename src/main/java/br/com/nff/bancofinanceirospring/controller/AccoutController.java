@@ -2,6 +2,8 @@ package br.com.nff.bancofinanceirospring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,7 @@ public class AccoutController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Account> insert(@RequestBody Account account){
+	public ResponseEntity<Account> insert(@RequestBody @Valid Account account){
 		account = service.insert(account);
 		return ResponseEntity.ok().body(account);
 	}	
