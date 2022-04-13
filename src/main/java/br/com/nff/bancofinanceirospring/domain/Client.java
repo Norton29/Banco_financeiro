@@ -29,6 +29,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_client")
 public class Client extends RepresentationModel<Client> implements Serializable{
 	
+	
+
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -62,14 +65,35 @@ public class Client extends RepresentationModel<Client> implements Serializable{
 	@NotBlank
 	private String nationality;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "client")
 	private List<Account> accountLists;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "client")
 	private List<Card> cardLists;
 	
+	
+	@JsonIgnore
+	public List<Account> getAccountLists() {
+		return accountLists;
+	}
+
+
+	public void setAccountLists(List<Account> accountLists) {
+		this.accountLists = accountLists;
+	}
+
+
+	@JsonIgnore
+	public List<Card> getCardLists() {
+		return cardLists;
+	}
+
+
+	public void setCardLists(List<Card> cardLists) {
+		this.cardLists = cardLists;
+	}
 	
 	
 }

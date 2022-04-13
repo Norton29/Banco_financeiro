@@ -3,6 +3,7 @@ package br.com.nff.bancofinanceirospring.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.nff.bancofinanceirospring.domain.enums.CardType;
 import lombok.Data;
@@ -19,7 +24,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Table(name="tb_card")
-public class Card implements Serializable{
+public class Card extends RepresentationModel<Card> implements Serializable{
+
+	
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -36,14 +43,18 @@ public class Card implements Serializable{
 	private Integer cardNumber;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	private Client client;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")
 	private Account account;
+	
+	
+
+
 	
 	
 //	public CardDTO(Long id, CardType cardType, Integer accountNumber, Integer cardNumber) {

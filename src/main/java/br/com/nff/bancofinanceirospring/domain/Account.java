@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.nff.bancofinanceirospring.domain.enums.AccountType;
 import lombok.AllArgsConstructor;
@@ -24,9 +29,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name= "tb_account", uniqueConstraints = {@UniqueConstraint(columnNames = {"accountType" , "client_id"})})
-public class Account implements Serializable{
+public class Account extends RepresentationModel<Account> implements Serializable{
 	
+	
+
+
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -50,6 +59,15 @@ public class Account implements Serializable{
 	private List<Card> cardLists;
 	
 
+	@JsonIgnore
+	public List<Card> getCardLists() {
+		return cardLists;
+	}
+
+
+	public void setCardLists(List<Card> cardLists) {
+		this.cardLists = cardLists;
+	}
 
 	
 //	public AccountDTO(Long id, AccountType accountType, Integer accountNumber, Double balance) {
