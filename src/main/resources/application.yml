@@ -1,5 +1,20 @@
 spring:
-    profiles:
-      active: dev
-jpa:
-    open-in-view: true
+ datasource:
+   driverClassName: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://localhost:3306/banco_super_legal
+   username: root
+   password: No290194#
+ jpa:
+   hibernate.ddl-auto: create-drop
+   generate-ddl: true
+   show-sql: true
+       
+
+
+jwt:
+   secret=MYJWTSECRET
+   expiration=3600000
+   
+    
+start_time: 10:00:00
+end_time: 18:00:00
